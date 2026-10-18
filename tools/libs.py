@@ -53,11 +53,41 @@ def solder_pads_bat():
     return fp_text('SolderWire_2pad_P6mm_D1.6mm_BAT', b, 'Two solder pads for the 18650 Li-ion cell leads (18 AWG)')
 
 
+def mount_hole_m2():
+    b = '\t(pad "" np_thru_hole circle (at 0 0) (size 2.2 2.2) (drill 2.2) (layers "*.Cu" "*.Mask"))\n'
+    b += '\t(fp_circle (center 0 0) (end 2.4 0) (stroke (width 0.15) (type solid)) (fill no) (layer "F.SilkS"))\n'
+    b += '\t(fp_circle (center 0 0) (end 2.7 0) (stroke (width 0.05) (type solid)) (fill no) (layer "F.CrtYd"))\n'
+    return fp_text('MountingHole_2.2mm_M2', b, 'M2 hole for the screen standoffs', attr='exclude_from_pos_files exclude_from_bom')
+
+
+def nfc_coil():
+    """NFC loop antenna as a net-tie footprint (placed at board origin, coordinates = board coordinates):
+    F.Cu spiral from pad 1 (outer end) inwards, via (pad 2) at the inner end, the B.Cu bridge out of the coil is a board track (build_pcb)."""
+    c = design.NFC; p = c['w'] + c['s']
+    x0, y0, x1, y1, n = c['x0'], c['y0'], c['x1'], c['y1'], c['turns']
+    pts = [(x1 + 2.0, y0), (x1, y0)]
+    for k in range(n):
+        a, b_, cc, d = x0 + k * p, y0 + k * p, x1 - k * p, y1 - k * p
+        pts += [(a, b_), (a, d), (cc, d), (cc, b_ + p)]
+        if k < n - 1:
+            pts.append((cc - p, b_ + p))
+    w = c['w']; ex, ey = pts[-1]
+    b = '\t(net_tie_pad_groups "1,2")\n'
+    for (ax, ay), (bx, by) in zip(pts, pts[1:]):
+        b += f'\t(fp_line (start {ax:.3f} {ay:.3f}) (end {bx:.3f} {by:.3f}) (stroke (width {w}) (type solid)) (layer "F.Cu"))\n'
+    b += f'\t(pad "1" smd rect (at {x1 + 2.0:.3f} {y0:.3f}) (size 0.6 0.6) (layers "F.Cu" "F.Mask"))\n'
+    b += f'\t(pad "2" thru_hole circle (at {ex:.3f} {ey:.3f}) (size 0.7 0.7) (drill 0.3) (layers "*.Cu"))\n'
+    b += f'\t(fp_rect (start {x0 - 0.6:.2f} {y0 - 0.6:.2f}) (end {x1 + 2.6:.2f} {y1 + 0.6:.2f}) (stroke (width 0.05) (type solid)) (fill no) (layer "F.CrtYd"))\n'
+    b += f'\t(fp_text user "NFC {n} windingen" (at {(x0 + x1) / 2:.2f} {y1 + 1.2:.2f} 0) (layer "F.Fab") (effects (font (size 0.8 0.8) (thickness 0.12))))\n'
+    return fp_text('NFC_Coil', b, 'NFC loop antenna for the ST25DV (net tie: the coil is a DC short between AC0 and AC1)',
+                   attr='smd exclude_from_pos_files')
+
+
 def build_fp_lib():
     d = os.path.join(PRJ, LIB + '.pretty'); os.makedirs(d, exist_ok=True)
     for f in os.listdir(d):
         os.remove(os.path.join(d, f))
-    custom = {'MountingHole_3.2mm_M3': mount_hole_m3(), 'SolderWire_2pad_P6mm_D1.6mm_BAT': solder_pads_bat()}
+    custom = {'NFC_Coil': nfc_coil(), 'MountingHole_3.2mm_M3': mount_hole_m3(), 'MountingHole_2.2mm_M2': mount_hole_m2(), 'SolderWire_2pad_P6mm_D1.6mm_BAT': solder_pads_bat()}
     for n, t in custom.items():
         open(os.path.join(d, n + '.kicad_mod'), 'w').write(t)
     for p in design.parts:
@@ -147,13 +177,36 @@ def cm5_symbol():
     return s
 
 
+def box_symbol(name, ref, left, right, descr, fp):
+    """simple rectangle symbol: left / right = [(number, name, type)]"""
+    h = 2.54 * max(len(left), len(right))
+    s = [Sym('symbol'), name, [Sym('pin_names'), [Sym('offset'), 1.016]],
+         [Sym('exclude_from_sim'), Sym('no')], [Sym('in_bom'), Sym('yes')], [Sym('on_board'), Sym('yes')],
+         prop('Reference', ref, (0, h / 2 + 2.54)), prop('Value', name, (0, -h / 2 - 2.54)),
+         prop('Footprint', fp, hide=True), prop('Datasheet', '', hide=True), prop('Description', descr, hide=True)]
+    sub = [Sym('symbol'), name + '_1_1',
+           [Sym('rectangle'), [Sym('start'), -7.62, h / 2 + 1.27], [Sym('end'), 7.62, -h / 2 - 1.27],
+            [Sym('stroke'), [Sym('width'), 0.254], [Sym('type'), Sym('default')]], [Sym('fill'), [Sym('type'), Sym('background')]]]]
+    for side, lst in ((0, left), (1, right)):
+        for i, (num, nm, t) in enumerate(lst):
+            y = h / 2 - 1.27 - 2.54 * i
+            sub.append(pin(t, -12.7 if side == 0 else 12.7, y, 0 if side == 0 else 180, num, nm))
+    s.append(sub)
+    s.append([Sym('embedded_fonts'), Sym('no')])
+    return s
+
+
 def build_sym_lib():
     out = {}
     for p in design.parts:
         sid = p['sym']; n = sym_name(sid)
         if n in out:
             continue
-        if sid == 'lucht:CM5':
+        if sid == 'lucht:TPS61023':
+            out[n] = box_symbol('TPS61023', 'U', [(1, 'FB', 'input'), (2, 'EN', 'input'), (3, 'VIN', 'power_in')],
+                                [(6, 'VOUT', 'power_out'), (5, 'SW', 'passive'), (4, 'GND', 'power_in')],
+                                'TI TPS61023 boost converter, SOT-563', 'Package_TO_SOT_SMD:SOT-563')
+        elif sid == 'lucht:CM5':
             out[n] = cm5_symbol()
         elif sid == 'lucht:Q_PMOS_GDS':
             s = rename_sym(symlib.get('Device:Q_PMOS'), 'Q_PMOS_GDS')
@@ -164,6 +217,11 @@ def build_sym_lib():
             out[n] = s
         else:
             out[n] = symlib.get(sid)
+            if n == 'ST25DV04K-IER8C3':
+                for sub in find(out[n], 'symbol'):
+                    for pn in list(find(sub, 'pin')):
+                        if find1(pn, 'number')[1] == '9':
+                            sub.remove(pn)
         # point the footprint field to our own lib
         fpid = LIB + ':' + fp_name(p['fp'])
         for e in out[n]:

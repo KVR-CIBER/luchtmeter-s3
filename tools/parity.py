@@ -43,6 +43,14 @@ if len(sys.argv) > 1 and sys.argv[1] == 'fixnc':
                 if net is None:
                     net = pcbnew.NETINFO_ITEM(b, nm); b.Add(net)
                 p.SetNet(net); k += 1
+    seen, dup = set(), []                       # drop vias stacked on top of each other (fan-out + finisher)
+    for t in b.GetTracks():
+        if t.GetClass() == 'PCB_VIA':
+            key = (t.GetPosition().x, t.GetPosition().y, t.GetNetname())
+            (dup.append(t) if key in seen else seen.add(key))
+    for t in dup:
+        b.Remove(t)
+    print('duplicate vias removed:', len(dup))
     pcbnew.ZONE_FILLER(b).Fill(b.Zones())
     pcbnew.SaveBoard(os.path.join(PRJ, 'luchtmeter.kicad_pcb'), b)
     import build_pcb; build_pcb.write_project()

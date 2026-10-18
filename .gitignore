@@ -3,3 +3,7 @@
 out/
 tools/freerouting.jar
 *.kicad_prl
+docs/waveshare43/*.zip
+docs/waveshare43/drawing/**/*.prt.*
+docs/waveshare43/drawing/**/2.stp
+docs/waveshare43/drawing/**/3.stp

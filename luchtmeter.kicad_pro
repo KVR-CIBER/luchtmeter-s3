@@ -96,7 +96,7 @@
         "footprint": "error",
         "footprint_filters_mismatch": "ignore",
         "footprint_symbol_field_mismatch": "warning",
-        "footprint_symbol_mismatch": "warning",
+        "footprint_symbol_mismatch": "ignore",
         "footprint_type_mismatch": "ignore",
         "hole_clearance": "error",
         "hole_to_hole": "warning",
@@ -556,7 +556,7 @@
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "priority": 0,
         "schematic_color": "rgba(0, 0, 0, 0.000)",
-        "track_width": 0.4,
+        "track_width": 0.3,
         "tuning_profile": "",
         "via_diameter": 0.45,
         "via_drill": 0.2,
@@ -628,6 +628,14 @@
         "pattern": "BAT_MID"
       },
       {
+        "netclass": "BAT",
+        "pattern": "V5D"
+      },
+      {
+        "netclass": "BAT",
+        "pattern": "BST_SW"
+      },
+      {
         "netclass": "PWR",
         "pattern": "3V3"
       },
@@ -638,6 +646,10 @@
       {
         "netclass": "PWR",
         "pattern": "GND"
+      },
+      {
+        "netclass": "PWR",
+        "pattern": "TP_3V3"
       },
       {
         "netclass": "USB",

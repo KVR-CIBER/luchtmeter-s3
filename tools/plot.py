@@ -3,7 +3,7 @@ import json, sys
 import matplotlib; matplotlib.use('Agg'); import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle, FancyBboxPatch
 d = json.load(open(sys.argv[1])); png = sys.argv[2]
-fig, ax = plt.subplots(figsize=(12, 22)); ax.set_aspect('equal')
+fig, ax = plt.subplots(figsize=(22, 18)); ax.set_aspect('equal')
 import json as _j; _o=_j.load(open('outline.json'))['edge']; ax.plot([p[0] for p in _o],[p[1] for p in _o],'k',lw=2)
 for f in d:
     if f['ref']=='U1': x,y=f['pos']; f['box']=[x-9.78,y-12.9,x+9.78,y+13.47]
@@ -23,5 +23,5 @@ for i, a in enumerate(d):
         if A[0] < B[2] and B[0] < A[2] and A[1] < B[3] and B[1] < A[3]:
             ov.append((a['ref'], b['ref']))
 print('overlaps:', ov)
-ax.set_xlim(-32, 32); ax.set_ylim(64, -64); ax.grid(alpha=.3); ax.set_xticks(range(-70, 71, 5)); ax.set_yticks(range(-65, 66, 5))
+ax.set_xlim(-56, 56); ax.set_ylim(46, -46); ax.grid(alpha=.3); ax.set_xticks(range(-70, 71, 5)); ax.set_yticks(range(-45, 46, 5))
 fig.savefig(png, dpi=70, bbox_inches='tight')

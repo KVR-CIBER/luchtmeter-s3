@@ -16,7 +16,9 @@ LCSC = {'ESP32-S3-WROOM-1-N16R8': 'C2913202', '22u': 'C29277', '100n': 'C14663',
         'DW01A': 'C351410', '100': 'C22775', 'AO3400A': 'C20917', 'AO3401A': 'C15127', '1M': 'C22935',
         'XC6220B331MR': 'C86534', '47n': 'C107093', 'SCHERM': 'C41417326', 'LTR-303ALS-01': 'C364577', '4k7': 'C23162',
         'SCD41-D-R2': 'C3659294', 'SHT45': 'C5221601', 'I2C': 'C160404', 'RESET': 'C72443', 'BOOT': 'C72443',
-        'WEKKEN': 'C72443', 'BATTERIJ': '(solder pads, no part)'}
+        'WEKKEN': 'C72443', 'BATTERIJ': '(solder pads, no part)',
+        'ESP32-S3-WROOM-1U-N16R8': 'C3013946', 'SCHERM': 'C202114', 'TPS61023': 'C919459', '1uH': 'C408332',
+        '732k': 'C23239', 'ST25DV04K': 'C155601', '10p': 'C1634', 'groen USB': 'C12624', 'NFC antenne': '(PCB copper, no part)'}
 
 
 def lcsc(value):

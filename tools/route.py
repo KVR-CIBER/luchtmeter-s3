@@ -65,7 +65,7 @@ def stitch_gnd(b):
             if (x1 + t * dx - px) ** 2 + (y1 + t * dy - py) ** 2 < margin ** 2:
                 return False
         return c
-    for gx, gy in itertools.product(range(-28, 29, 4), range(-61, 62, 4)):
+    for gx, gy in itertools.product(range(-52, 53, 4), range(-43, 44, 4)):
         x, y = B.MM(B.OX + gx), B.MM(B.OY + gy)
         if not inside(gx, gy):
             continue
@@ -147,6 +147,32 @@ def fix_vias(refill=True):
     print('vias fixed:', n)
 
 
+def clean_vias():
+    """Remove vias that touch no track and no pad (left over from fan-out / rip-up), then refill."""
+    b = pcbnew.LoadBoard(PCB); rm = []
+    ends = set()
+    for t in b.GetTracks():
+        if t.GetClass() == 'PCB_TRACK':
+            ends.add((t.GetStart().x, t.GetStart().y)); ends.add((t.GetEnd().x, t.GetEnd().y))
+    pads = [p for f in b.GetFootprints() for p in f.Pads()]
+    for v in b.GetTracks():
+        if v.GetClass() != 'PCB_VIA':
+            continue
+        pos = v.GetPosition()
+        if (pos.x, pos.y) in ends:
+            continue
+        if any(p.GetNetname() == v.GetNetname() and p.HitTest(pos) for p in pads):
+            continue
+        if v.GetNetname() == 'GND':          # stitching vias between the GND pours and the GND plane
+            continue
+        rm.append(v)
+    for v in rm:
+        b.Remove(v)
+    pcbnew.ZONE_FILLER(b).Fill(b.Zones())
+    pcbnew.SaveBoard(PCB, b)
+    print('dangling vias removed:', len(rm))
+
+
 if __name__ == '__main__':
-    {'export': export, 'import_raw': import_raw, 'finish': do_import, 'fixvias': fix_vias}[sys.argv[1]]()
+    {'export': export, 'import_raw': import_raw, 'finish': do_import, 'fixvias': fix_vias, 'cleanvias': clean_vias}[sys.argv[1]]()
     sys.stdout.flush(); os._exit(0)   # KiCad's SWIG objects can crash Python at shutdown
