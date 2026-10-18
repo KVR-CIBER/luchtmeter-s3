@@ -1,0 +1,5 @@
+.history/
+*.lck
+out/
+tools/freerouting.jar
+*.kicad_prl

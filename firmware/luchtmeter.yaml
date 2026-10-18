@@ -1,0 +1,180 @@
+# Luchtmeter S3 - ESPHome firmware for Home Assistant (first version, not yet tested on hardware)
+# Battery: wakes every 5 min, measures CO2/temp/RH/light, sends to Home Assistant, shows it, sleeps again.
+# On USB (PGOOD low) it stays awake. The WEKKEN button wakes it immediately.
+
+substitutions:
+  name: luchtmeter
+  sleep_time: 5min
+  awake_time: 45s
+
+esphome:
+  name: ${name}
+  friendly_name: Luchtmeter
+  on_shutdown:
+    - switch.turn_off: rail            # display + sensors off before deep sleep
+
+esp32:
+  board: esp32-s3-devkitc-1
+  variant: esp32s3
+  flash_size: 16MB
+  framework:
+    type: esp-idf
+
+psram:
+  mode: octal
+  speed: 80MHz
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+  fast_connect: true                   # shorter wake time on battery
+
+api:
+ota:
+  - platform: esphome
+logger:
+
+# ---------------------------------------------------------------- power
+switch:
+  - platform: gpio
+    id: rail
+    name: "Scherm + sensoren voeding"
+    pin: {number: GPIO18, inverted: true}   # PWR_EN low = 3V3_SW on
+    restore_mode: ALWAYS_ON
+    internal: true
+
+deep_sleep:
+  id: sleeper
+  run_duration: ${awake_time}
+  sleep_duration: ${sleep_time}
+  wakeup_pin: {number: GPIO4, inverted: true, mode: {input: true}}   # WEKKEN button (100k pull-up on the board)
+
+binary_sensor:
+  - platform: gpio
+    name: "USB aangesloten"
+    pin: {number: GPIO16, inverted: true}   # BQ24075 PGOOD
+    on_press:
+      - deep_sleep.prevent: sleeper
+    on_release:
+      - deep_sleep.allow: sleeper
+  - platform: gpio
+    name: "Laden"
+    pin: {number: GPIO15, inverted: true}   # BQ24075 CHG
+
+sensor:
+  - platform: adc
+    id: vbat
+    name: "Batterij spanning"
+    pin: GPIO8
+    attenuation: 12db
+    filters:
+      - multiply: 2.0                       # 1M / 1M divider
+    update_interval: 30s
+  - platform: template
+    name: "Batterij"
+    unit_of_measurement: "%"
+    device_class: battery
+    lambda: |-
+      float v = id(vbat).state;
+      return clamp((v - 3.3f) / (4.15f - 3.3f) * 100.0f, 0.0f, 100.0f);
+    update_interval: 30s
+
+  - platform: scd4x
+    measurement_mode: single_shot           # low power: one measurement per wake-up
+    co2:
+      id: co2
+      name: "CO2"
+    temperature:
+      name: "Temperatuur (SCD41)"
+      disabled_by_default: true
+    humidity:
+      name: "Vochtigheid (SCD41)"
+      disabled_by_default: true
+    update_interval: 30s
+
+  - platform: sht4x
+    temperature:
+      id: temp
+      name: "Temperatuur"
+    humidity:
+      id: hum
+      name: "Vochtigheid"
+    update_interval: 30s
+
+  - platform: ltr_als_ps
+    type: ALS
+    ambient_light:
+      id: lux
+      name: "Licht"
+    update_interval: 30s
+
+i2c:
+  sda: GPIO1
+  scl: GPIO2
+
+# ---------------------------------------------------------------- display + touch
+spi:
+  - id: lcd_spi
+    clk_pin: GPIO12
+    mosi_pin: GPIO11
+    miso_pin: GPIO13
+  - id: touch_spi
+    clk_pin: GPIO7
+    mosi_pin: GPIO6
+    miso_pin: GPIO5
+
+output:
+  - platform: ledc
+    id: bl_pwm
+    pin: GPIO21
+    inverted: true                          # P-MOSFET: low = backlight on
+
+light:
+  - platform: monochromatic
+    name: "Scherm helderheid"
+    output: bl_pwm
+    restore_mode: ALWAYS_ON
+
+font:
+  - file: "gfonts://Inter@700"
+    id: big
+    size: 64
+  - file: "gfonts://Inter@400"
+    id: small
+    size: 20
+
+color:
+  - {id: groen, hex: "2ecc71"}
+  - {id: oranje, hex: "f39c12"}
+  - {id: rood, hex: "e74c3c"}
+  - {id: grijs, hex: "9aa0a6"}
+
+display:
+  - platform: ili9xxx
+    model: ILI9341
+    spi_id: lcd_spi
+    cs_pin: GPIO10
+    dc_pin: GPIO9
+    reset_pin: GPIO14
+    invert_colors: false
+    update_interval: 5s
+    lambda: |-
+      auto c = id(co2).has_state() ? id(co2).state : 0;
+      Color kl = c < 800 ? id(groen) : (c < 1200 ? id(oranje) : id(rood));
+      it.fill(Color::BLACK);
+      it.print(it.get_width() / 2, 30, id(small), id(grijs), TextAlign::CENTER, "CO2 ppm");
+      it.printf(it.get_width() / 2, 100, id(big), kl, TextAlign::CENTER, "%.0f", c);
+      it.printf(20, 190, id(small), Color::WHITE, "%.1f °C", id(temp).state);
+      it.printf(it.get_width() - 20, 190, id(small), Color::WHITE, TextAlign::TOP_RIGHT, "%.0f %%", id(hum).state);
+      it.printf(20, 240, id(small), id(grijs), "%.0f lux", id(lux).state);
+      it.printf(it.get_width() - 20, 240, id(small), id(grijs), TextAlign::TOP_RIGHT, "%.2f V", id(vbat).state);
+
+touchscreen:
+  - platform: xpt2046
+    spi_id: touch_spi
+    cs_pin: GPIO47
+    interrupt_pin: GPIO48
+    on_touch:
+      - deep_sleep.prevent: sleeper         # touching keeps it awake ...
+      - delay: 30s
+      - deep_sleep.allow: sleeper           # ... for 30 s

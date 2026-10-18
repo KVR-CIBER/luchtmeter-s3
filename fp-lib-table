@@ -1,0 +1,4 @@
+(fp_lib_table
+	(version 7)
+	(lib (name "lucht")(type "KiCad")(uri "${KIPRJMOD}/lucht.pretty")(options "")(descr "Luchtmeter S3"))
+)
