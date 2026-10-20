@@ -1,5 +1,7 @@
 # Luchtmeter S3 (v2.0)
 
+By **Kobe Van Robaeys** ([@KVR-CIBER](https://github.com/KVR-CIBER)) and co-inventor **[@varol56](https://github.com/varol56)**.
+
 ESP32-S3 air-quality meter behind a **4.3" 800x480 IPS capacitive touchscreen**, LiPo battery, deep sleep, NFC tag and
 Home Assistant (ESPHome). The front is only the screen, a small light window and the NFC spot; every part sits on the back.
 
@@ -34,3 +36,7 @@ LTR-303, battery %, deep sleep 5 min, wake on WEKKEN button or NFC tap.
 
 ## Files
 `tools/design.py` = single source of truth; `tools/build_all.sh` rebuilds everything. JLC files in `fab/`.
+
+## Authors
+- Kobe Van Robaeys ([@KVR-CIBER](https://github.com/KVR-CIBER))
+- [@varol56](https://github.com/varol56), co-inventor
