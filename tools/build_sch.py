@@ -195,7 +195,7 @@ def build():
     doc = [S('kicad_sch'), [S('version'), 20250114], [S('generator'), 'eeschema'], [S('generator_version'), '9.0'],
            [S('uuid'), ROOT_UUID], [S('paper'), 'A1'],
            [S('title_block'), [S('title'), 'Luchtmeter S3'], [S('date'), '2026-10-18'], [S('rev'), '1.0'],
-            [S('company'), 'Kobe Van Robaeys - maakleerplek'], [S('comment'), 1, 'ESP32-S3-WROOM-1U + 4.3in touch + SCD41 + SHT45 + LTR-303 + NFC, LiPo']],
+            [S('company'), 'Kobe Van Robaeys & varol56 - maakleerplek'], [S('comment'), 1, 'ESP32-S3-WROOM-1U + 4.3in touch + SCD41 + SHT45 + LTR-303 + NFC, LiPo']],
            lib_symbols] + items + [[S('sheet_instances'), [S('path'), '/', [S('page'), '1']]], [S('embedded_fonts'), S('no')]]
     open(os.path.join(PRJ, NAME + '.kicad_sch'), 'w').write(dump(doc) + '\n')
     print('schematic written: %d blocks' % len(blocks))

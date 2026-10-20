@@ -1,4 +1,5 @@
 # Luchtmeter S3 v2 - ESPHome firmware for Home Assistant (first version, NOT yet tested on hardware)
+# Authors: Kobe Van Robaeys (@KVR-CIBER) & varol56 (@varol56, co-inventor)
 # Screen: Waveshare 4.3in Capacitive Touch LCD (800x480 RGB565 + GT911). Sensors: SCD41, SHT45, LTR-303. NFC: ST25DV04K.
 # Battery: wakes every 5 min (or on the WEKKEN button / an NFC tap), measures, sends to Home Assistant, sleeps again.
 

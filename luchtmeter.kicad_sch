@@ -8,7 +8,7 @@
 		(title "Luchtmeter S3")
 		(date "2026-10-18")
 		(rev "1.0")
-		(company "Kobe Van Robaeys - maakleerplek")
+		(company "Kobe Van Robaeys & varol56 - maakleerplek")
 		(comment 1 "ESP32-S3-WROOM-1U + 4.3in touch + SCD41 + SHT45 + LTR-303 + NFC, LiPo")
 	)
 	(lib_symbols

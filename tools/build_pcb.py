@@ -430,7 +430,7 @@ def back_art(board):
     text(board, B, 'LUCHTMETER', (25.5, -32.0), size=2.4, th=0.38, mirror=True, bold=True)
     text(board, B, 'LiPo 300 mAh hier', (25.5, -28.0), size=0.9, th=0.15, mirror=True)
     text(board, B, 'CO2 · temp · vocht · licht · NFC', (25.5, -25.5), size=0.8, th=0.14, mirror=True)
-    text(board, B, 'Kobe Van Robaeys · 2026', (25.5, -23.0), size=0.8, th=0.14, mirror=True)
+    text(board, B, 'Kobe Van Robaeys & varol56 · 2026', (25.5, -23.0), size=0.8, th=0.14, mirror=True)
     leaf(board, B, (25.5, -18.5), 0.3)
 
 
