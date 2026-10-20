@@ -7,3 +7,11 @@ docs/waveshare43/*.zip
 docs/waveshare43/drawing/**/*.prt.*
 docs/waveshare43/drawing/**/2.stp
 docs/waveshare43/drawing/**/3.stp
+video/ui/
+video/frames/
+video/final/
+video/assets/*.glb
+video/assets/*.hdr
+video/assets/screen*.stl
+video/__pycache__/
+video/still_*.png
