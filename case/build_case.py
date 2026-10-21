@@ -1,4 +1,5 @@
 """Luchtmeter S3 case: front shell + back plate + desk stand (CadQuery), STL + STEP + renders.
+Authors: Kobe Vanrobaeys (@KVR-CIBER) & varol56 (@varol56, co-inventor).
 
 CAD axes: X = board x (right), Y = -board y (up), Z = towards the viewer; the front face of the case is at Z = 0.
 Stack (measured in Waveshare's STEP of the 4.3in Capacitive Touch LCD):

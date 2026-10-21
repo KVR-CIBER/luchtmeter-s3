@@ -85,7 +85,7 @@ def frame(f):
         al = fade(f, T.END[0] + 4, T.N + 40, 20)
         veil = Image.new('RGBA', im.size, (4, 5, 8, int(200 * al))); lay = Image.alpha_composite(veil, lay); d = ImageDraw.Draw(lay)
         text_shadow(lay, (W / 2, H / 2 - 90), 'LUCHTMETER S3', END1, WHITE, al, 'mm')
-        text_shadow(lay, (W / 2, H / 2 + 70), 'Kobe Van Robaeys  &  varol56', END2, CYAN, al, 'mm')
+        text_shadow(lay, (W / 2, H / 2 + 70), 'Kobe Vanrobaeys  &  varol56', END2, CYAN, al, 'mm')
         text_shadow(lay, (W / 2, H / 2 + 170), 'ESP32-S3 · ESPHome · Home Assistant', SUB, GREY, al, 'mm')
     return Image.alpha_composite(im, lay).convert('RGB')
 

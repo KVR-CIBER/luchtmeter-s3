@@ -1,4 +1,4 @@
 # Authors
 
-- Kobe Van Robaeys (@KVR-CIBER)
+- Kobe Vanrobaeys (@KVR-CIBER)
 - @varol56, co-inventor

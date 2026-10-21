@@ -18533,7 +18533,7 @@
 			(justify mirror)
 		)
 	)
-	(gr_text "Kobe Van Robaeys & varol56 · 2026"
+	(gr_text "Kobe Vanrobaeys & varol56 · 2026"
 		(at 175.5 77 0)
 		(layer "B.SilkS")
 		(uuid "fa5f1ee7-215c-482d-b650-a44b590092b6")
