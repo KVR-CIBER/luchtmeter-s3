@@ -266,6 +266,15 @@ def build():
     text(board, B, 'CO2', (26.0, -0.6), size=0.9, bold=True, mirror=True)
     text(board, B, 'TEMP', (47.0, 27.5), size=0.7, bold=True, mirror=True)
     text(board, B, 'U.FL antenne', (0.0, -42.0), size=0.6, mirror=True)
+    # test points: net name under each pad; probe connector: pin names next to the pads
+    x_, y_, dx_ = design.TP_ROW
+    for i, net in enumerate(design.TESTPOINTS):
+        text(board, B, net, (x_ + i * dx_, y_ + 2.6), size=0.5, rot=90, mirror=True)
+    text(board, B, 'TESTPUNTEN', (x_ + (len(design.TESTPOINTS) - 1) * dx_ / 2, y_ - 1.8), size=0.7, bold=True, mirror=True)
+    jx, jy = design.parts[[p['ref'] for p in design.parts].index('J3')]['at'][:2]
+    for i, n in enumerate(('GND', '3V3', 'SDA1', 'SCL1')):
+        text(board, B, n, (jx + 3.0, jy + i * 2.54), size=0.6, mirror=True)
+    text(board, B, 'SONDE', (jx + 3.0, jy - 2.0), size=0.7, bold=True, mirror=True)
     back_art(board)
     silk_cleanup(board)
     board.SetFileName(os.path.join(PRJ, NAME + '.kicad_pcb'))

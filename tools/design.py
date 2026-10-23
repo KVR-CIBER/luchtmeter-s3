@@ -200,6 +200,24 @@ P('ANT1', 'Device:L', 'lucht:NFC_Coil', 'NFC antenne', {1: 'NFC_AC0', 2: 'NFC_AC
 C('C23', '10p', 'NFC_AC0', 'NFC_AC1', (29.4, 28.0, 90), G, mpn='0603 10p C0G (3.5 uH coil + 28.5 pF internal + 10 pF = 13.6 MHz; tune 8-15 pF)')
 R('R25', '100k', 'NFC_GPO', '3V3', (29.4, 31.6, 0), G)
 
+# ---------------------------------------------------------------- probe connector on I2C1 (issue #2, varol56)
+# Second, external temperature probe (e.g. a long SHT45 greenhouse soil probe) for tests / calibration. It goes on I2C1
+# (touch bus, GT911 0x5D) and not on I2C0: an SHT45 probe has the same fixed address 0x44 as U6. Power = TP_3V3, the same
+# rail as the I2C1 pull-ups, so a powered-down probe is never back-fed through SDA/SCL. Order GND/3V3/SDA/SCL (Qwiic).
+# Left edge, next to the USB-C, so the cable leaves the case on the same side. Not placed by JLC: solder a header/wires.
+G = 'Sonde (I2C1)'
+P('J3', 'Connector_Generic:Conn_01x04', 'Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical', 'SONDE I2C1',
+  {1: 'GND', 2: 'TP_3V3', 3: 'SDA1', 4: 'SCL1'}, (-49.0, 3.2, 0),
+  mpn='1x4 2.54 mm header or wires (not assembled): GND, 3V3, SDA1, SCL1', group=G, dnp=True)
+
+# ---------------------------------------------------------------- test points (issue #1, varol56): 1.5 mm pads on the back
+G = 'Testpunten'
+TESTPOINTS = ['GND', 'VBUS', 'VBAT', 'VSYS', '3V3', '3V3_SW', 'V5D', 'TP_3V3', 'SDA0', 'SCL0', 'SDA1', 'SCL1', 'GND']
+TP_ROW = (1.0, 17.5, 3.0)                              # x of the first pad, y, pitch
+for i, net in enumerate(TESTPOINTS, 1):
+    P(f'TP{i}', 'Connector:TestPoint', 'TestPoint:TestPoint_Pad_D1.5mm', net, {1: net},
+      (TP_ROW[0] + (i - 1) * TP_ROW[2], TP_ROW[1], 0), mpn='test pad (copper, no part)', group=G, dnp=True)
+
 # ---------------------------------------------------------------- mounting: 4x M2 screen standoffs + 2x M3 case screws
 for i, (x, y) in enumerate(LCD_HOLES, 1):
     P(f'H{i}', 'Mechanical:MountingHole', 'lucht:MountingHole_2.2mm_M2', 'M2', {}, (x, y, 0), group='Bevestiging', side='F')
@@ -212,7 +230,7 @@ NETCLASS = {
     'USB': (['USB_DP', 'USB_DM'], 0.25, 0.15),
 }
 
-DNP = set()
+DNP = {p['ref'] for p in parts if p['dnp']}
 
 
 def nets():
