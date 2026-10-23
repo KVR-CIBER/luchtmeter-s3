@@ -18,6 +18,11 @@ for i in 1 2 3; do                           # finish what Freerouting left open
 done
 "$PY" route.py cleanvias 2>/dev/null | grep -v Debug
 "$PY" parity.py fixnc 2>/dev/null
-"$KC" pcb drc --schematic-parity -o ../out/drc.rpt ../luchtmeter.kicad_pcb
-"$KC" sch erc -o ../out/erc.rpt ../luchtmeter.kicad_sch
+"$KC" pcb drc --schematic-parity -o "$PWD/../out/drc.rpt" ../luchtmeter.kicad_pcb | tee ../out/drc.txt
+"$KC" sch erc -o "$PWD/../out/erc.rpt" ../luchtmeter.kicad_sch
 python3 fab.py
+# Freerouting is multithreaded and not deterministic: a run can leave violations behind. Then simply run this again.
+if [ "$(grep -c '^Found 0 ' ../out/drc.txt)" != 3 ]; then
+  echo "DRC NOT CLEAN (see out/drc.rpt): run build_all.sh again"; exit 1
+fi
+echo "DRC 0 / unconnected 0 / parity 0"
