@@ -14,11 +14,16 @@ esphome:
   platformio_options:
     board_build.flash_mode: dio
   on_boot:
-    priority: 900
-    then:
-      - switch.turn_on: sensor_power           # 3V3_SW: sensors + NFC
-      - switch.turn_on: screen_power           # 5 V boost for the screen
-  on_shutdown:
+    - priority: 1100                           # before the I2C buses are set up (priority 1000)
+      then:
+        - lambda: |-
+            // the I2C pins were held as floating inputs through deep sleep (release_*_bus): give them back
+            for (gpio_num_t p : {GPIO_NUM_4, GPIO_NUM_5, GPIO_NUM_7, GPIO_NUM_8}) gpio_hold_dis(p);
+    - priority: 900
+      then:
+        - switch.turn_on: sensor_power         # 3V3_SW: sensors + NFC
+        - switch.turn_on: screen_power         # 5 V boost for the screen
+  on_shutdown:                                 # before deep sleep: screen off first, then the sensor rail
     - light.turn_off: backlight
     - switch.turn_off: screen_power
     - switch.turn_off: sensor_power
@@ -45,17 +50,58 @@ ota:
 logger:
 
 # ---------------------------------------------------------------- power + sleep
+# Issue #2 (varol56): the I2C pull-ups sit on the switched rails (bus_sensors: 3V3_SW, bus_touch: TP_3V3 = the screen's own
+# 3.3 V). Before a rail goes off, its SDA/SCL pins become inputs without pull-up, otherwise the ESP32 feeds the powered-down
+# chips through the I/O pins (back-powering: costs current and can hang the bus). Always switch the rails with
+# sensor_power / screen_power (never pwr_en / disp_on directly). The rails only go off before deep sleep; waking up is a
+# reboot, so the buses are set up again from scratch.
 switch:
   - platform: gpio
-    id: sensor_power
+    id: pwr_en
     pin: {number: GPIO15, inverted: true}      # PWR_EN low = 3V3_SW on
     restore_mode: ALWAYS_ON
     internal: true
   - platform: gpio
-    id: screen_power
-    pin: GPIO17                                # DISP_ON: TPS61023 enable
+    id: disp_on
+    pin: GPIO17                                # DISP_ON: TPS61023 enable (5 V for the screen -> its TP_3V3 for the touch)
     restore_mode: ALWAYS_ON
     internal: true
+  - platform: template
+    id: sensor_power
+    internal: true
+    lambda: return id(pwr_en).state;
+    turn_on_action:
+      - switch.turn_on: pwr_en
+    turn_off_action:
+      - script.execute: release_sensor_bus     # GPIO4/5 floating first ...
+      - switch.turn_off: pwr_en                # ... then 3V3_SW off
+  - platform: template
+    id: screen_power
+    internal: true
+    lambda: return id(disp_on).state;
+    turn_on_action:
+      - switch.turn_on: disp_on
+    turn_off_action:
+      - script.execute: release_touch_bus      # GPIO7/8 floating first ...
+      - switch.turn_off: disp_on               # ... then the screen (and TP_3V3, the probe on J3) off
+
+script:
+  - id: release_sensor_bus
+    then:
+      - lambda: |-
+          for (gpio_num_t p : {GPIO_NUM_4, GPIO_NUM_5}) {      // SDA0, SCL0
+            gpio_set_direction(p, GPIO_MODE_INPUT);             // no output driver (also detaches the I2C peripheral)
+            gpio_set_pull_mode(p, GPIO_FLOATING);               // no internal pull-up / pull-down
+            gpio_hold_en(p);                                    // keep it like this through deep sleep (on_boot releases)
+          }
+  - id: release_touch_bus
+    then:
+      - lambda: |-
+          for (gpio_num_t p : {GPIO_NUM_7, GPIO_NUM_8}) {      // SDA1, SCL1 (GT911 + the probe on J3)
+            gpio_set_direction(p, GPIO_MODE_INPUT);
+            gpio_set_pull_mode(p, GPIO_FLOATING);
+            gpio_hold_en(p);
+          }
 
 deep_sleep:
   id: sleeper
@@ -104,14 +150,33 @@ sensor:
       id: lux
       name: "Licht"
     update_interval: 30s
+  # Optional (issue #2): external SHT4x probe on connector J3 (GND / 3V3 / SDA1 / SCL1, e.g. the long greenhouse soil probe)
+  # for tests or calibration. It sits on bus_touch because it has the same fixed address 0x44 as the SHT45 on the board.
+  # J3's 3V3 is TP_3V3 (the screen's 3.3 V), so the probe is only powered while the screen is on. Uncomment to use:
+  # - platform: sht4x
+  #   i2c_id: bus_touch
+  #   address: 0x44
+  #   temperature:
+  #     id: probe_temp
+  #     name: "Sonde temperatuur"
+  #   humidity:
+  #     id: probe_hum
+  #     name: "Sonde vochtigheid"
+  #   update_interval: 30s
 
 i2c:
+  # 4k7 pull-ups on the board, to the switched rails: the ESP32's internal pull-ups (always-on 3.3 V) must stay off,
+  # or they would back-power the sensors / touch through SDA/SCL while those rails are off.
   - id: bus_sensors                            # SCD41 0x62, SHT45 0x44, LTR-303 0x29, ST25DV 0x53/0x57/0x2D
     sda: GPIO4
     scl: GPIO5
-  - id: bus_touch                              # GT911 0x5D
+    sda_pullup_enabled: false
+    scl_pullup_enabled: false
+  - id: bus_touch                              # GT911 0x5D (+ optional probe on J3)
     sda: GPIO7
     scl: GPIO8
+    sda_pullup_enabled: false
+    scl_pullup_enabled: false
 
 # ---------------------------------------------------------------- screen + touch
 output:
