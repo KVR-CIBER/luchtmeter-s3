@@ -6905,6 +6905,345 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "lucht:Conn_01x04"
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "J"
+				(at 0 5.08 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "Conn_01x04"
+				(at 0 -7.62 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "lucht:PinHeader_1x04_P2.54mm_Vertical"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Generic connector, single row, 01x04, script generated (kicad-library-utils/schlib/autogen/connector/)"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "connector"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "Connector*:*_1x??_*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Conn_01x04_1_1"
+				(rectangle
+					(start -1.27 3.81)
+					(end 1.27 -6.35)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(rectangle
+					(start -1.27 2.667)
+					(end 0 2.413)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -1.27 0.127)
+					(end 0 -0.127)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -1.27 -2.413)
+					(end 0 -2.667)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -1.27 -4.953)
+					(end 0 -5.207)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at -5.08 2.54 0)
+					(length 3.81)
+					(name "Pin_1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 0 0)
+					(length 3.81)
+					(name "Pin_2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 -2.54 0)
+					(length 3.81)
+					(name "Pin_3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 -5.08 0)
+					(length 3.81)
+					(name "Pin_4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "lucht:TestPoint"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0.762)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "TP"
+				(at 0 6.858 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "TestPoint"
+				(at 0 5.08 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "lucht:TestPoint_Pad_D1.5mm"
+				(at 5.08 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 5.08 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "test point"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "test point tp"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "Pin* Test*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "TestPoint_0_1"
+				(circle
+					(center 0 3.302)
+					(radius 0.762)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "TestPoint_1_1"
+				(pin passive line
+					(at 0 0 90)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "lucht:MountingHole"
 			(pin_names
 				(offset 1.016)
@@ -18185,7 +18524,1319 @@
 	)
 	(rectangle
 		(start 203.134 263.97)
-		(end 257.134 284.97)
+		(end 232.484 295.13)
+		(stroke
+			(width 0.35)
+			(type dash)
+			(color 60 90 140 1)
+		)
+		(fill
+			(type none)
+		)
+		(uuid "3f1c8b0b-4dc1-569c-af1a-012de6fda452")
+	)
+	(text "SONDE (I2C1)"
+		(exclude_from_sim no)
+		(at 205.134 268.97 0)
+		(effects
+			(font
+				(size 2.5 2.5)
+				(bold yes)
+			)
+			(justify left bottom)
+		)
+		(uuid "2dde5bc4-ebda-5379-86d3-cce85d2d61ca")
+	)
+	(symbol
+		(lib_id "lucht:Conn_01x04")
+		(at 220.98 281.94 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp yes)
+		(uuid "693c2f49-b275-5397-b590-07cff73a055d")
+		(property "Reference" "J3"
+			(at 220.98 275.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SONDE I2C1"
+			(at 220.98 290.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "lucht:PinHeader_1x04_P2.54mm_Vertical"
+			(at 220.98 281.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 220.98 281.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "1x4 2.54 mm header or wires (not assembled): GND, 3V3, SDA1, SCL1"
+			(at 220.98 281.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "af55e5e6-9635-5e1a-84aa-a59e34987079")
+		)
+		(pin "2"
+			(uuid "97e19e12-f717-531c-a725-0cf26a294e0e")
+		)
+		(pin "3"
+			(uuid "11005f0f-cd98-5c0b-a088-33d8de9f2000")
+		)
+		(pin "4"
+			(uuid "4d5460e3-1e0c-5c27-ae17-32a232b765c4")
+		)
+		(instances
+			(project "luchtmeter"
+				(path "/b6733b50-3bc9-5315-9e94-3dcdd596ba80"
+					(reference "J3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(global_label "GND"
+		(shape passive)
+		(at 215.9 279.4 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "3dc6680e-52f9-5978-a6a3-b86915485ddd")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 215.9 279.4 0)
+			(effects
+				(font
+					(size 1 1)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "TP_3V3"
+		(shape passive)
+		(at 215.9 281.94 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "aaff7280-b8b4-5a4e-9c39-9c0d1d911339")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 215.9 281.94 0)
+			(effects
+				(font
+					(size 1 1)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "SDA1"
+		(shape passive)
+		(at 215.9 284.48 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "052c6af8-7db1-5222-874c-325f14f0f603")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 215.9 284.48 0)
+			(effects
+				(font
+					(size 1 1)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "SCL1"
+		(shape passive)
+		(at 215.9 287.02 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "b83095bc-94f2-58dc-b557-b6713cdbc411")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 215.9 287.02 0)
+			(effects
+				(font
+					(size 1 1)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(rectangle
+		(start 203.134 303.13)
+		(end 313.134 339.432)
+		(stroke
+			(width 0.35)
+			(type dash)
+			(color 60 90 140 1)
+		)
+		(fill
+			(type none)
+		)
+		(uuid "7ae2c4c6-42e7-5823-9ffc-e06ec77c4799")
+	)
+	(text "TESTPUNTEN"
+		(exclude_from_sim no)
+		(at 205.134 308.13 0)
+		(effects
+			(font
+				(size 2.5 2.5)
+				(bold yes)
+			)
+			(justify left bottom)
+		)
+		(uuid "35fd5d30-ea5d-5f1c-bbf0-2666963e350a")
+	)
+	(symbol
+		(lib_id "lucht:TestPoint")
+		(at 208.28 325.12 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp yes)
+		(uuid "4a015e46-14de-54e7-a3c3-4a308ed69893")
+		(property "Reference" "TP1"
+			(at 208.28 319.318 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 208.28 327.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "lucht:TestPoint_Pad_D1.5mm"
+			(at 208.28 325.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 208.28 325.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "test pad (copper, no part)"
+			(at 208.28 325.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "90f525d6-b5e8-5b2d-a286-26b4b4c8550f")
+		)
+		(instances
+			(project "luchtmeter"
+				(path "/b6733b50-3bc9-5315-9e94-3dcdd596ba80"
+					(reference "TP1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(global_label "GND"
+		(shape passive)
+		(at 208.28 325.12 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "a87c3736-9dc0-5f21-9e9f-21de21261611")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 208.28 325.12 0)
+			(effects
+				(font
+					(size 1 1)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(symbol
+		(lib_id "lucht:TestPoint")
+		(at 215.9 325.12 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp yes)
+		(uuid "e9c0ee19-3de7-5f84-ba02-d887d994f379")
+		(property "Reference" "TP2"
+			(at 215.9 319.318 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "VBUS"
+			(at 215.9 327.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "lucht:TestPoint_Pad_D1.5mm"
+			(at 215.9 325.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 215.9 325.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "test pad (copper, no part)"
+			(at 215.9 325.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "a537a700-1024-5ff4-9e5e-da3856b0cc5a")
+		)
+		(instances
+			(project "luchtmeter"
+				(path "/b6733b50-3bc9-5315-9e94-3dcdd596ba80"
+					(reference "TP2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(global_label "VBUS"
+		(shape passive)
+		(at 215.9 325.12 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "840ba4c1-1dbe-56b8-ad1d-85a104bc01cf")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 215.9 325.12 0)
+			(effects
+				(font
+					(size 1 1)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(symbol
+		(lib_id "lucht:TestPoint")
+		(at 223.52 325.12 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp yes)
+		(uuid "2190a472-5acd-56f6-a093-f715bfc0c670")
+		(property "Reference" "TP3"
+			(at 223.52 319.318 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "VBAT"
+			(at 223.52 327.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "lucht:TestPoint_Pad_D1.5mm"
+			(at 223.52 325.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 223.52 325.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "test pad (copper, no part)"
+			(at 223.52 325.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "bdafebb6-944c-5b98-a99b-4b2595585c40")
+		)
+		(instances
+			(project "luchtmeter"
+				(path "/b6733b50-3bc9-5315-9e94-3dcdd596ba80"
+					(reference "TP3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(global_label "VBAT"
+		(shape passive)
+		(at 223.52 325.12 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "79c14f05-3abb-5f97-ad05-a7f01a5f8800")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 223.52 325.12 0)
+			(effects
+				(font
+					(size 1 1)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(symbol
+		(lib_id "lucht:TestPoint")
+		(at 231.14 325.12 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp yes)
+		(uuid "8b46ee81-3777-5538-bab3-f7ed1706af63")
+		(property "Reference" "TP4"
+			(at 231.14 319.318 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "VSYS"
+			(at 231.14 327.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "lucht:TestPoint_Pad_D1.5mm"
+			(at 231.14 325.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 231.14 325.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "test pad (copper, no part)"
+			(at 231.14 325.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "ba572d37-9725-5616-be83-768c749a25ef")
+		)
+		(instances
+			(project "luchtmeter"
+				(path "/b6733b50-3bc9-5315-9e94-3dcdd596ba80"
+					(reference "TP4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(global_label "VSYS"
+		(shape passive)
+		(at 231.14 325.12 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "e38831d6-df47-5cf6-af5c-f425bd0c6dde")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 231.14 325.12 0)
+			(effects
+				(font
+					(size 1 1)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(symbol
+		(lib_id "lucht:TestPoint")
+		(at 238.76 325.12 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp yes)
+		(uuid "7c3684d8-ca28-5559-b35b-d5eacf182822")
+		(property "Reference" "TP5"
+			(at 238.76 319.318 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "3V3"
+			(at 238.76 327.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "lucht:TestPoint_Pad_D1.5mm"
+			(at 238.76 325.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 238.76 325.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "test pad (copper, no part)"
+			(at 238.76 325.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "74055484-a883-585d-982d-9a05fd50e4ae")
+		)
+		(instances
+			(project "luchtmeter"
+				(path "/b6733b50-3bc9-5315-9e94-3dcdd596ba80"
+					(reference "TP5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(global_label "3V3"
+		(shape passive)
+		(at 238.76 325.12 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "139d2c17-4298-5000-9795-0bd3d78bad8b")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 238.76 325.12 0)
+			(effects
+				(font
+					(size 1 1)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(symbol
+		(lib_id "lucht:TestPoint")
+		(at 246.38 325.12 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp yes)
+		(uuid "8cf6634d-1bfa-5180-ba75-be160dd27660")
+		(property "Reference" "TP6"
+			(at 246.38 319.318 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "3V3_SW"
+			(at 246.38 327.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "lucht:TestPoint_Pad_D1.5mm"
+			(at 246.38 325.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 246.38 325.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "test pad (copper, no part)"
+			(at 246.38 325.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "d06490e6-306a-513a-b2ea-6f0a98fdb0ac")
+		)
+		(instances
+			(project "luchtmeter"
+				(path "/b6733b50-3bc9-5315-9e94-3dcdd596ba80"
+					(reference "TP6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(global_label "3V3_SW"
+		(shape passive)
+		(at 246.38 325.12 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "36aa4f13-716e-5c00-a153-e06b51cb2743")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 246.38 325.12 0)
+			(effects
+				(font
+					(size 1 1)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(symbol
+		(lib_id "lucht:TestPoint")
+		(at 254 325.12 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp yes)
+		(uuid "5c7179e8-8d0a-5941-a901-7797b3c3d3d5")
+		(property "Reference" "TP7"
+			(at 254 319.318 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "V5D"
+			(at 254 327.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "lucht:TestPoint_Pad_D1.5mm"
+			(at 254 325.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 254 325.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "test pad (copper, no part)"
+			(at 254 325.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "c9866889-a6c5-5d7c-9d8d-398918f4c5d5")
+		)
+		(instances
+			(project "luchtmeter"
+				(path "/b6733b50-3bc9-5315-9e94-3dcdd596ba80"
+					(reference "TP7")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(global_label "V5D"
+		(shape passive)
+		(at 254 325.12 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "2b68011b-cf23-5b85-92f3-3bc8713b3b1b")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 254 325.12 0)
+			(effects
+				(font
+					(size 1 1)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(symbol
+		(lib_id "lucht:TestPoint")
+		(at 264.16 325.12 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp yes)
+		(uuid "3404e91b-9fd8-5293-bcf0-f234d0b86bad")
+		(property "Reference" "TP8"
+			(at 264.16 319.318 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "TP_3V3"
+			(at 264.16 327.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "lucht:TestPoint_Pad_D1.5mm"
+			(at 264.16 325.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 264.16 325.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "test pad (copper, no part)"
+			(at 264.16 325.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "8938063a-6425-521a-9da2-37981406f57f")
+		)
+		(instances
+			(project "luchtmeter"
+				(path "/b6733b50-3bc9-5315-9e94-3dcdd596ba80"
+					(reference "TP8")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(global_label "TP_3V3"
+		(shape passive)
+		(at 264.16 325.12 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "82aef68c-77d7-54b3-bed6-b5ef61974b99")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 264.16 325.12 0)
+			(effects
+				(font
+					(size 1 1)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(symbol
+		(lib_id "lucht:TestPoint")
+		(at 271.78 325.12 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp yes)
+		(uuid "35ba781c-a86e-5c81-8cb9-d42fd9b77b21")
+		(property "Reference" "TP9"
+			(at 271.78 319.318 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SDA0"
+			(at 271.78 327.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "lucht:TestPoint_Pad_D1.5mm"
+			(at 271.78 325.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 271.78 325.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "test pad (copper, no part)"
+			(at 271.78 325.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "0437595f-ee88-5318-b7a3-2cb1fdbd8e65")
+		)
+		(instances
+			(project "luchtmeter"
+				(path "/b6733b50-3bc9-5315-9e94-3dcdd596ba80"
+					(reference "TP9")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(global_label "SDA0"
+		(shape passive)
+		(at 271.78 325.12 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "29a2e719-65b3-5e82-8bba-253b903e4029")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 271.78 325.12 0)
+			(effects
+				(font
+					(size 1 1)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(symbol
+		(lib_id "lucht:TestPoint")
+		(at 279.4 325.12 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp yes)
+		(uuid "23f002f6-6273-55f7-9ae1-d9f865361161")
+		(property "Reference" "TP10"
+			(at 279.4 319.318 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SCL0"
+			(at 279.4 327.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "lucht:TestPoint_Pad_D1.5mm"
+			(at 279.4 325.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 279.4 325.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "test pad (copper, no part)"
+			(at 279.4 325.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "f997eb3a-df7b-5438-a024-675fee9fd8ae")
+		)
+		(instances
+			(project "luchtmeter"
+				(path "/b6733b50-3bc9-5315-9e94-3dcdd596ba80"
+					(reference "TP10")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(global_label "SCL0"
+		(shape passive)
+		(at 279.4 325.12 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "a148a272-c325-5936-860e-4f56e54ed983")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 279.4 325.12 0)
+			(effects
+				(font
+					(size 1 1)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(symbol
+		(lib_id "lucht:TestPoint")
+		(at 287.02 325.12 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp yes)
+		(uuid "dce16b84-1930-55ca-bfbe-a0b257428af1")
+		(property "Reference" "TP11"
+			(at 287.02 319.318 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SDA1"
+			(at 287.02 327.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "lucht:TestPoint_Pad_D1.5mm"
+			(at 287.02 325.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 287.02 325.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "test pad (copper, no part)"
+			(at 287.02 325.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "84b41e63-a20c-55b8-8540-f9fd982a11a9")
+		)
+		(instances
+			(project "luchtmeter"
+				(path "/b6733b50-3bc9-5315-9e94-3dcdd596ba80"
+					(reference "TP11")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(global_label "SDA1"
+		(shape passive)
+		(at 287.02 325.12 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "91e83742-22b6-5494-bfe3-03ff04b4e774")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 287.02 325.12 0)
+			(effects
+				(font
+					(size 1 1)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(symbol
+		(lib_id "lucht:TestPoint")
+		(at 294.64 325.12 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp yes)
+		(uuid "b89c0fbd-04ea-5886-92be-457117722caa")
+		(property "Reference" "TP12"
+			(at 294.64 319.318 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SCL1"
+			(at 294.64 327.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "lucht:TestPoint_Pad_D1.5mm"
+			(at 294.64 325.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 294.64 325.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "test pad (copper, no part)"
+			(at 294.64 325.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "4bff8ab8-5782-58ba-9b02-9a7e84be57f1")
+		)
+		(instances
+			(project "luchtmeter"
+				(path "/b6733b50-3bc9-5315-9e94-3dcdd596ba80"
+					(reference "TP12")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(global_label "SCL1"
+		(shape passive)
+		(at 294.64 325.12 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "e946b0b5-1805-513f-9ff1-8c6ef97574d7")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 294.64 325.12 0)
+			(effects
+				(font
+					(size 1 1)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(symbol
+		(lib_id "lucht:TestPoint")
+		(at 302.26 325.12 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp yes)
+		(uuid "1005de44-f1ef-5033-bcea-5314fcee0e05")
+		(property "Reference" "TP13"
+			(at 302.26 319.318 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 302.26 327.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "lucht:TestPoint_Pad_D1.5mm"
+			(at 302.26 325.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 302.26 325.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "test pad (copper, no part)"
+			(at 302.26 325.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "eee2c563-88e7-5146-b44a-d1af2d247de9")
+		)
+		(instances
+			(project "luchtmeter"
+				(path "/b6733b50-3bc9-5315-9e94-3dcdd596ba80"
+					(reference "TP13")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(global_label "GND"
+		(shape passive)
+		(at 302.26 325.12 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1 1)
+			)
+			(justify right)
+		)
+		(uuid "ebff6a52-ee45-557c-873c-c823bdf9b1b4")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 302.26 325.12 0)
+			(effects
+				(font
+					(size 1 1)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(rectangle
+		(start 203.134 347.432)
+		(end 257.134 368.432)
 		(stroke
 			(width 0.35)
 			(type dash)
@@ -18198,7 +19849,7 @@
 	)
 	(text "BEVESTIGING"
 		(exclude_from_sim no)
-		(at 205.134 268.97 0)
+		(at 205.134 352.432 0)
 		(effects
 			(font
 				(size 2.5 2.5)
@@ -18210,7 +19861,7 @@
 	)
 	(symbol
 		(lib_id "lucht:MountingHole")
-		(at 208.28 276.86 0)
+		(at 208.28 360.68 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
@@ -18218,7 +19869,7 @@
 		(dnp no)
 		(uuid "001431bf-c18a-5ce2-95d7-da049400170c")
 		(property "Reference" "H1"
-			(at 208.28 274.36 0)
+			(at 208.28 358.18 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18226,7 +19877,7 @@
 			)
 		)
 		(property "Value" "M2"
-			(at 208.28 279.36 0)
+			(at 208.28 363.18 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18234,7 +19885,7 @@
 			)
 		)
 		(property "Footprint" "lucht:MountingHole_2.2mm_M2"
-			(at 208.28 276.86 0)
+			(at 208.28 360.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18243,7 +19894,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 208.28 276.86 0)
+			(at 208.28 360.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18262,7 +19913,7 @@
 	)
 	(symbol
 		(lib_id "lucht:MountingHole")
-		(at 215.9 276.86 0)
+		(at 215.9 360.68 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
@@ -18270,7 +19921,7 @@
 		(dnp no)
 		(uuid "f0b99037-65e4-5840-bf82-1a2f0ffbec8b")
 		(property "Reference" "H2"
-			(at 215.9 274.36 0)
+			(at 215.9 358.18 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18278,7 +19929,7 @@
 			)
 		)
 		(property "Value" "M2"
-			(at 215.9 279.36 0)
+			(at 215.9 363.18 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18286,7 +19937,7 @@
 			)
 		)
 		(property "Footprint" "lucht:MountingHole_2.2mm_M2"
-			(at 215.9 276.86 0)
+			(at 215.9 360.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18295,7 +19946,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 215.9 276.86 0)
+			(at 215.9 360.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18314,7 +19965,7 @@
 	)
 	(symbol
 		(lib_id "lucht:MountingHole")
-		(at 223.52 276.86 0)
+		(at 223.52 360.68 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
@@ -18322,7 +19973,7 @@
 		(dnp no)
 		(uuid "4c9bea24-6474-5405-8cd9-2b7d3ca82ded")
 		(property "Reference" "H3"
-			(at 223.52 274.36 0)
+			(at 223.52 358.18 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18330,7 +19981,7 @@
 			)
 		)
 		(property "Value" "M2"
-			(at 223.52 279.36 0)
+			(at 223.52 363.18 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18338,7 +19989,7 @@
 			)
 		)
 		(property "Footprint" "lucht:MountingHole_2.2mm_M2"
-			(at 223.52 276.86 0)
+			(at 223.52 360.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18347,7 +19998,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 223.52 276.86 0)
+			(at 223.52 360.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18366,7 +20017,7 @@
 	)
 	(symbol
 		(lib_id "lucht:MountingHole")
-		(at 231.14 276.86 0)
+		(at 231.14 360.68 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
@@ -18374,7 +20025,7 @@
 		(dnp no)
 		(uuid "0bd4f3d8-fb3f-5b18-aebc-21e0e7d38d3a")
 		(property "Reference" "H4"
-			(at 231.14 274.36 0)
+			(at 231.14 358.18 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18382,7 +20033,7 @@
 			)
 		)
 		(property "Value" "M2"
-			(at 231.14 279.36 0)
+			(at 231.14 363.18 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18390,7 +20041,7 @@
 			)
 		)
 		(property "Footprint" "lucht:MountingHole_2.2mm_M2"
-			(at 231.14 276.86 0)
+			(at 231.14 360.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18399,7 +20050,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 231.14 276.86 0)
+			(at 231.14 360.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18418,7 +20069,7 @@
 	)
 	(symbol
 		(lib_id "lucht:MountingHole")
-		(at 238.76 276.86 0)
+		(at 238.76 360.68 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
@@ -18426,7 +20077,7 @@
 		(dnp no)
 		(uuid "68dc3abe-b349-565d-bc24-a6cc3e818e50")
 		(property "Reference" "H5"
-			(at 238.76 274.36 0)
+			(at 238.76 358.18 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18434,7 +20085,7 @@
 			)
 		)
 		(property "Value" "M3"
-			(at 238.76 279.36 0)
+			(at 238.76 363.18 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18442,7 +20093,7 @@
 			)
 		)
 		(property "Footprint" "lucht:MountingHole_3.2mm_M3"
-			(at 238.76 276.86 0)
+			(at 238.76 360.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18451,7 +20102,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 238.76 276.86 0)
+			(at 238.76 360.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18470,7 +20121,7 @@
 	)
 	(symbol
 		(lib_id "lucht:MountingHole")
-		(at 246.38 276.86 0)
+		(at 246.38 360.68 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
@@ -18478,7 +20129,7 @@
 		(dnp no)
 		(uuid "e281281d-18ff-5f01-ac33-e30cede164ad")
 		(property "Reference" "H6"
-			(at 246.38 274.36 0)
+			(at 246.38 358.18 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18486,7 +20137,7 @@
 			)
 		)
 		(property "Value" "M3"
-			(at 246.38 279.36 0)
+			(at 246.38 363.18 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18494,7 +20145,7 @@
 			)
 		)
 		(property "Footprint" "lucht:MountingHole_3.2mm_M3"
-			(at 246.38 276.86 0)
+			(at 246.38 360.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18503,7 +20154,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 246.38 276.86 0)
+			(at 246.38 360.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)

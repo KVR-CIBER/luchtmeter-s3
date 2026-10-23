@@ -5,7 +5,7 @@ CAD axes: X = board x (right), Y = -board y (up), Z = towards the viewer; the fr
 Stack (measured in Waveshare's STEP of the 4.3in Capacitive Touch LCD):
   front plate 0 .. -1.6 | cover glass -1.6 .. -2.4 | module PCB -8.8 .. -10.4 | its own 4.1 mm standoffs |
   our PCB -14.5 .. -16.1 | back parts (SCD41 6.5 mm, LiPo ~5 mm) | back plate -23.6 .. -25.6
-Run: ~/Downloads/solar-olympiade/.venv/bin/python case/build_case.py
+Run: <python with cadquery> case/build_case.py   (e.g. .venv/bin/python, see README)
 """
 import math, os, sys
 import cadquery as cq
@@ -86,6 +86,17 @@ ux, uy = board_xy('J2')
 uz = Z_PCB_B - 1.6
 usb = cq.Workplane('YZ').workplane(offset=-OUT_W / 2 - 1).center(uy, uz).sketch().rect(12.4, 6.8).vertices().fillet(3.0).finalize().extrude(WALL + 2)
 shell = shell.cut(usb)
+# cable notch for the probe connector J3 (issue #2) in the left wall, next to the USB-C: a U open to the back edge, so a
+# ready-made 4-wire cable (Qwiic / Dupont) can be laid in before the back plate goes on. J3 sits on the back of the board;
+# solder the wires straight onto it (a standard 8.5 mm header would hit the back plate, 7.5 mm away).
+J3_SLOT_W = 5.0
+j3 = [q for q in D.parts if q['ref'] == 'J3'][0]
+jy = by(j3['at'][1] + 1.5 * 2.54)                                               # middle of the 4 pins (1x4, 2.54 mm, downwards)
+jz = Z_PCB_B - 2.5                                                              # bottom of the U: 2.5 mm behind the board
+probe = (cq.Workplane('YZ').workplane(offset=-OUT_W / 2 - 1).center(jy, (jz - DEPTH - 1) / 2)
+         .rect(J3_SLOT_W, jz + DEPTH + 1).extrude(WALL + 2)
+         .union(cq.Workplane('YZ').workplane(offset=-OUT_W / 2 - 1).center(jy, jz).circle(J3_SLOT_W / 2).extrude(WALL + 2)))
+shell = shell.cut(probe)
 # slots for the two hooks at the top of the back plate
 for x in (-30.0, 30.0):
     shell = shell.cut(cq.Workplane('XY').workplane(offset=Z_BACK_IN - 0.1).center(x, CAV_H / 2 + 0.6).rect(10.4, 1.4).extrude(2.6))

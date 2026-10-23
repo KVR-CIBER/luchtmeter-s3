@@ -2,7 +2,7 @@
 import subprocess, sys, os, xml.etree.ElementTree as ET
 import pcbnew
 PRJ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-KC = '/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli'
+from kienv import KICAD_CLI as KC
 xmlp = os.path.join(PRJ, 'out', 'sch_net.xml')
 subprocess.run([KC, 'sch', 'export', 'netlist', '--format', 'kicadxml', '-o', xmlp, os.path.join(PRJ, 'luchtmeter.kicad_sch')], capture_output=True)
 r = ET.parse(xmlp).getroot()

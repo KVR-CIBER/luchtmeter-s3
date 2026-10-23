@@ -42,3 +42,13 @@ view('render_voorkant.png', [(shell, WHITE, 1, (0, 0, 0)), (screen, BLUE, 1, (0,
 view('render_achterkant.png', [(shell, WHITE, 1, (0, 0, 0)), (back, WHITE, 1, (0, 0, 0))], 20, 125)
 view('render_explosie.png', [(shell, WHITE, 1, (0, 0, 0)), (glass, BLACK, 1, (0, 0, 0)), (pcb, GREEN, 1, (0, 0, -25)),
                              (back, GREY, 1, (0, 0, -55))], 20, -50, lim=85)
+# left wall seen from outside (section through the wall): USB-C opening + the cable notch for the probe connector J3 (issue #2)
+sec = shell.section(plane_origin=[-54.6, 0, 0], plane_normal=[1, 0, 0])
+fig, ax = plt.subplots(figsize=(11, 4), dpi=110)
+for e in sec.discrete:
+    ax.plot(-e[:, 1], e[:, 2], 'k', lw=1.2)
+ax.text(-6.0, -12.5, 'USB-C', ha='center'); ax.text(7.0, -14.5, 'J3 sonde', ha='center')
+ax.set_aspect('equal'); ax.set_xlabel('board y (mm)'); ax.set_ylabel('z (mm, 0 = front, -25.6 = back)'); ax.grid(alpha=0.3)
+ax.set_title('Left wall (seen from outside)')
+fig.savefig(os.path.join(OUT, 'render_linkerwand.png'), bbox_inches='tight'); plt.close(fig)
+print('render render_linkerwand.png')

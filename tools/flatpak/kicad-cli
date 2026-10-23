@@ -1,0 +1,3 @@
+#!/bin/sh
+# kicad-cli from the KiCad flatpak (flathub org.kicad.KiCad), headless
+exec flatpak run --filesystem=host --command=kicad-cli org.kicad.KiCad "$@"

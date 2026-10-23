@@ -1,7 +1,7 @@
 """Load KiCad library symbols (resolving 'extends') and list their pins."""
 import os, copy
 from sexp import parse, find, find1, Sym
-SYMDIR = '/Applications/KiCad/KiCad.app/Contents/SharedSupport/symbols/'
+from kienv import SYMDIR
 _cache = {}
 
 def lib(name, path=None):

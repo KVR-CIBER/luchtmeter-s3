@@ -1,0 +1,4 @@
+#!/bin/sh
+# KiCad's python (with pcbnew) from the KiCad flatpak (flathub org.kicad.KiCad), with the paths the build scripts need inside it
+exec flatpak run --filesystem=host --env=KICAD_CLI=kicad-cli --env=KICAD_SHARE=/app/extensions/Library \
+  --command=python3 org.kicad.KiCad "$@"
