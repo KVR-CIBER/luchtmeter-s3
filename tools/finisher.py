@@ -102,6 +102,9 @@ def drop_dangling(b, nets):
     """Delete vias of the given nets that no longer connect anything on one of their layers."""
     import pcbnew
     T = lambda v: (round(pcbnew.ToMM(v.x), 3), round(pcbnew.ToMM(v.y), 3))
+    # pads / zones first: after b.Remove() KiCad 10's SWIG (python 3.14) can hand out untyped footprint objects
+    pads = [(p, p.GetLayerSet()) for f in b.GetFootprints() for p in f.Pads() if p.GetNetname() in nets]
+    zones = [z for z in b.Zones() if not z.GetIsRuleArea() and z.GetNetname() in nets]
     ends = {}
     for t in b.GetTracks():
         if t.GetClass() == 'PCB_TRACK' and t.GetNetname() in nets:
@@ -112,8 +115,6 @@ def drop_dangling(b, nets):
         if len(ends.get(T(v.GetPosition()), ())) < 2 and v.GetNetname() not in ('GND', 'V12', 'V5'):
             b.Remove(v); n += 1
     # then track stubs with a loose end (repeat until stable); work on plain tuples, remove at the end
-    pads = [(p, p.GetLayerSet()) for f in b.GetFootprints() for p in f.Pads() if p.GetNetname() in nets]
-    zones = [z for z in b.Zones() if not z.GetIsRuleArea() and z.GetNetname() in nets]
     tr = []
     for t in b.GetTracks():
         if t.GetNetname() in nets:
