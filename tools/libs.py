@@ -7,7 +7,7 @@ import design
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 PRJ = os.path.dirname(HERE)
-FPDIR = '/Applications/KiCad/KiCad.app/Contents/SharedSupport/footprints/'
+from kienv import FPDIR
 LIB = 'lucht'
 
 

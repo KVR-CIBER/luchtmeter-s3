@@ -3,7 +3,7 @@ import os, csv, subprocess, zipfile, shutil, collections
 import design
 
 PRJ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-KC = '/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli'
+from kienv import KICAD_CLI as KC
 PCB = os.path.join(PRJ, 'luchtmeter.kicad_pcb')
 SCH = os.path.join(PRJ, 'luchtmeter.kicad_sch')
 FAB = os.path.join(PRJ, 'fab')

@@ -3,7 +3,7 @@ import sys
 Routing is done afterwards by route.py (Freerouting)."""
 import os, json, math, uuid, shutil
 import pcbnew
-import design, libs
+import design, libs, kienv
 
 PRJ = libs.PRJ
 NAME = 'luchtmeter'
@@ -27,7 +27,7 @@ OUTLINE = {k: [tuple(p) for p in v[:-1]] for k, v in json.load(open(os.path.join
 
 # ---------------------------------------------------------------- project file
 def write_project():
-    tpl = json.load(open(os.path.expanduser('~/Documents/GitHub/tiltbox-kicad/tiltbox.kicad_pro')))
+    tpl = json.load(open(kienv.PRO_TEMPLATE))
     tpl['meta']['filename'] = NAME + '.kicad_pro'
     tpl['sheets'] = [[ROOT_UUID, 'Root']]
     tpl['boards'] = []

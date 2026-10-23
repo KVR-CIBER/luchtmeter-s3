@@ -5,7 +5,8 @@ import pcbnew
 
 HERE = os.path.dirname(os.path.abspath(__file__)); OUT = os.path.join(HERE, 'out')
 PRJ = os.path.dirname(HERE)
-KC = '/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli'
+sys.path.insert(0, os.path.join(PRJ, 'tools'))
+from kienv import KICAD_CLI as KC
 SCREEN = os.path.join(PRJ, 'docs', 'waveshare43', 'drawing', '4.3inch Capacitive Touch LCD 3D Drawing', '1.stp')
 Z_PCB_F = -14.5                                          # case CAD z of the board's front face
 

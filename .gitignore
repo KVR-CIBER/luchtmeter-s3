@@ -15,3 +15,8 @@ video/assets/*.hdr
 video/assets/screen*.stl
 video/__pycache__/
 video/still_*.png
+.venv/
+.venv-esphome/
+firmware/.esphome/
+firmware/secrets.yaml
+__pycache__/
